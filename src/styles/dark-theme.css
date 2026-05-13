@@ -1,0 +1,81 @@
+:root {
+  /*** Dark Theme ***/
+  --Navy-950: hsl(235, 21%, 11%);
+  --Navy-900: hsl(235, 24%, 19%);
+  --Purple-300: hsl(234, 39%, 85%);
+  --Purple-100: hsl(236, 33%, 92%); /* hover */
+  --Purple-600: hsl(235, 16%, 43%);
+  --Purple-700: hsl(233, 14%, 35%);
+  --Purple-800: hsl(237, 14%, 26%);
+  --Gray-600: hsl(236, 9%, 61%);
+}
+
+body {
+  background-image: url("/images/bg-mobile-dark.jpg");
+  background-color: var(--Navy-950);
+}
+@media (min-width: 650px) {
+  body {
+    background-image: url("/images/bg-desktop-dark.jpg");
+  }
+}
+
+.main form.insert,
+.main .show li,
+.main .options .tags,
+.main .options .count,
+.main .options .clear {
+  background-color: var(--Navy-900);
+}
+.main .show li {
+  border-bottom: 1px solid var(--Purple-800);
+  color: var(--Purple-300);
+}
+.main .show li.drag {
+  box-shadow: 0 0 0.5rem 0 var(--Gray-600);
+}
+.main form.insert .check,
+.main .show li .check {
+  background-color: var(--Purple-600);
+}
+.main form.insert .check::before,
+.main .show li .check::before {
+  background-color: var(--Navy-900);
+}
+.main .options .tags {
+  box-shadow: 0 -3.5rem 2rem -0.75rem var(--Navy-950);
+  color: var(--Purple-600);
+}
+.main .options .clear:hover,
+.main .options .tags .tags-item:not(.selected):hover {
+  color: var(--Purple-100);
+}
+.main .options .count,
+.main .options .clear,
+.main .show li.checked p {
+  color: var(--Purple-600);
+}
+.main form.insert input {
+  color: var(--Purple-300);
+}
+.main form.insert input::placeholder {
+  color: var(--Gray-600);
+}
+
+@media (min-width: 650px) {
+  .main form.insert {
+    box-shadow: 0 0.5rem 2rem -0.75rem var(--Navy-950);
+  }
+
+  .main .options {
+    box-shadow: 0 0.75rem 2rem -0.75rem var(--Navy-950);
+    background-color: var(--Navy-900);
+  }
+  .main .options .tags {
+    box-shadow: 0 0 0 0 !important;
+  }
+}
+
+.footer p {
+  color: var(--Purple-700);
+}

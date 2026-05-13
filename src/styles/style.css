@@ -1,0 +1,300 @@
+/* Start FontFace */
+@font-face {
+  font-family: "Josefin Sans";
+  src: url(/fonts/Josefin_Sans/static/JosefinSans-Regular.ttf);
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url(/fonts/Josefin_Sans/static/JosefinSans-Bold.ttf);
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+/* End FontFace */
+
+/* Start Root */
+:root {
+  /* Colors */
+  /** Primary **/
+  --Blue-500: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient(
+    125deg,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+
+  /** Neutral **/
+  /*** Light Theme ***/
+  --Gray-50: hsl(0, 0%, 98%);
+  --Purple-300: hsl(234, 39%, 85%);
+  --Gray-300: hsl(233, 11%, 84%);
+  --Gray-600: hsl(236, 9%, 61%);
+  --Navy-850: hsl(235, 19%, 35%);
+
+  /* Typography */
+  /** Body Copy **/
+  font-size: 18px;
+  /* font-size: 16px; */
+
+  /** Font **/
+  font-family: "Josefin Sans", Arial, sans-serif;
+
+  /* Custom */
+  --border-radius: 0.25rem;
+  --transition: 350ms ease;
+}
+/* @media (min-width: 500px) {
+  :root {
+    font-size: 18px;
+  }
+} */
+/* End Root */
+
+/* Start Body */
+body {
+  margin: 0;
+  background-image: url("/images/bg-mobile-light.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding: 2rem 1rem;
+  color: var(--Navy-850);
+}
+@media (min-width: 350px) {
+  body {
+    padding-inline: 1.5rem;
+  }
+}
+@media (min-width: 400px) {
+  body {
+    padding: 3rem 2rem;
+  }
+}
+@media (min-width: 650px) {
+  body {
+    background-image: url("/images/bg-desktop-light.jpg");
+  }
+}
+/* End Body */
+
+/* Start Container */
+.container {
+  max-width: 540px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+* {
+  transition: var(--transition);
+}
+/* End Container */
+
+/* Start Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header h1.logo {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  color: var(--Gray-50);
+  font-size: 1.75rem;
+  cursor: default;
+}
+/* .header h1.logo:hover {
+  color: var(--Purple-300);
+} */
+.header .mode img {
+  cursor: pointer;
+}
+/* End Header */
+
+/* Start Main */
+.main form.insert,
+.main .show li,
+.main .options,
+.main .options .tags {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  min-height: 3rem;
+  grid-auto-flow: column;
+  gap: 0.5rem;
+
+  background-color: var(--Gray-50);
+}
+.main form.insert {
+  border-radius: var(--border-radius);
+  grid-template-columns: calc(25px + 1rem) 1fr;
+}
+.main .show li:first-child {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+/* .main .show li:last-child {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+} */
+.main .show li {
+  border-bottom: 1px solid var(--Gray-300);
+  grid-template-columns: calc(25px + 1rem) 1fr calc(25px + 1rem);
+
+  cursor: pointer;
+}
+.main .show li.drag {
+  transform: rotate(4deg);
+  box-shadow: 0 0 0.5rem 0 var(--Blue-500);
+}
+.main form.insert .check,
+.main .show li .check {
+  /* border: 1px solid var(--Gray-300); */
+  border: 0;
+  margin-inline-start: 0.75rem;
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  position: relative;
+  background-color: var(--Gray-300);
+}
+.main form.insert .check:hover,
+.main .show li .check:hover {
+  background-image: var(--Check-Background);
+}
+.main form.insert .check::before,
+.main .show li .check::before {
+  content: "";
+  position: absolute;
+  width: calc(1.25rem - 2px);
+  height: calc(1.25rem - 2px);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--Gray-50);
+}
+.main form.insert input,
+.main .show li p {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  height: stretch;
+  user-select: none;
+}
+.main form.insert input {
+  color: var(--Navy-850);
+}
+
+.main .show {
+  padding: 0;
+  list-style: none;
+  margin-block-end: 0;
+}
+.main .show li img {
+  cursor: pointer;
+  user-select: none;
+}
+
+.main .show li.checked .check {
+  background-image: var(--Check-Background);
+}
+.main .show li.checked .check::before {
+  background-image: var(--Check-Background);
+}
+.main .show li.checked .check::after {
+  content: url("/images/icon-check.svg");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.main .show li.checked p {
+  color: var(--Gray-300);
+  text-decoration: line-through;
+}
+
+.main .options {
+  grid-template-areas:
+    "count clear"
+    "tags tags";
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0;
+  background-color: transparent;
+}
+.main .options .tags {
+  grid-area: tags;
+  justify-items: center;
+  border-radius: var(--border-radius);
+  box-shadow: 0 -3.5rem 2rem -0.75rem var(--Gray-600);
+  font-weight: 600;
+  color: var(--Gray-600);
+  justify-content: center;
+  gap: 2rem;
+}
+.main .options .tags .tags-item {
+  cursor: pointer;
+}
+.main .options .clear:hover,
+.main .options .tags .tags-item:not(.selected):hover {
+  color: var(--Navy-850);
+}
+.main .options .tags .tags-item.selected {
+  color: var(--Blue-500);
+  cursor: context-menu;
+}
+.main .options .count,
+.main .options .clear {
+  background-color: var(--Gray-50);
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--Gray-600);
+  font-size: 0.85rem;
+}
+.main .options .count {
+  grid-area: count;
+  border-bottom-left-radius: var(--border-radius);
+  padding-inline-end: 1rem;
+  gap: 0.25rem;
+  cursor: context-menu;
+}
+.main .options .clear {
+  grid-area: clear;
+  border-bottom-right-radius: var(--border-radius);
+  padding-inline-end: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 650px) {
+  .main form.insert {
+    box-shadow: 0 0.5rem 2rem -0.75rem var(--Gray-600);
+  }
+
+  .main .options {
+    grid-template-areas: "count tags clear";
+    box-shadow: 0 0.75rem 2rem -0.75rem var(--Gray-600);
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: var(--Gray-50);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+  .main .options .tags {
+    box-shadow: 0 0 0 0;
+    font-size: 0.9rem;
+  }
+  .main .options .count,
+  .main .options .clear {
+    padding-inline: 0;
+  }
+}
+/* End Main */
+
+/* Start Footer */
+.footer p {
+  color: var(--Gray-600);
+  text-align: center;
+}
+/* End Footer */

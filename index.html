@@ -1,36 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="/src/styles/normalize.css" />
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <link rel="stylesheet" href="/src/styles/dark-theme.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="logo">Todo</h1>
+        <div class="mode">
+          <img src="/images/icon-moon.svg" alt="icon-moon" />
+        </div>
+      </div>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+      <div class="main">
+        <form class="insert">
+          <button class="check" type="submit"></button>
+          <input type="text" placeholder="Create a new todo..." />
+        </form>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 0.6875rem; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+        <ul class="show">
+          <!-- <li>
+            <div class="check"></div>
+            <p>The Task Num1</p>
+            <img src="/images/icon-cross.svg" alt="">
+          </li> -->
+        </ul>
 
-  Todo
+        <div class="options">
+          <div class="tags">
+            <div class="tags-item selected">All</div>
+            <div class="tags-item">Active</div>
+            <div class="tags-item">Completed</div>
+          </div>
+          <div class="count"><span id="counter">0</span> items left</div>
+          <div class="clear" id="clear">Clear Completed</div>
+        </div>
+      </div>
 
-  <!-- Add dynamic number --> items left
+      <div class="footer">
+        <p>Drag and drop to reorder list</p>
+        <p>Double Click on task text to copy</p>
+      </div>
+    </div>
 
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
-
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </footer>
-</body>
+    <script type="module" src="/src/main.js" defer></script>
+  </body>
 </html>
